@@ -1,28 +1,20 @@
-// カードを順番に表示
+const languageSelect = document.getElementById("language");
 
-const cards = document.querySelectorAll(".card");
+languageSelect.addEventListener("change", function () {
 
-const observer = new IntersectionObserver((entries)=>{
+    const language = this.value;
 
-    entries.forEach((entry)=>{
+    const elements = document.querySelectorAll("[data-ja]");
 
-        if(entry.isIntersecting){
+    elements.forEach(function (element) {
 
-            entry.target.style.opacity="1";
-            entry.target.style.transform="translateY(0)";
-
+        if (language === "en") {
+            element.textContent = element.getAttribute("data-en");
+        } else {
+            element.textContent = element.getAttribute("data-ja");
         }
 
     });
 
 });
 
-cards.forEach((card)=>{
-
-    card.style.opacity="0";
-    card.style.transform="translateY(40px)";
-    card.style.transition="0.6s";
-
-    observer.observe(card);
-
-});
