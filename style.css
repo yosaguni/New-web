@@ -1,0 +1,210 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== ヘッダー ===== */
+
+header {
+    background: linear-gradient(135deg, #0077ff, #00b4ff);
+    color: white;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== 言語選択 ===== */
+
+#language {
+    margin-left: 20px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+/* ===== ヒーロー ===== */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background:
+        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+        url("jan.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* ===== ボタン ===== */
+
+.btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #0077ff;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0077ff;
+    color: white;
+}
+
+/* ===== 共通セクション ===== */
+
+.about,
+.spot-page {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.about h2,
+.spot-page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0077ff;
+}
+
+/* ===== 魅力ボックス ===== */
+
+.box {
+    background: white;
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.box h3 {
+    margin-bottom: 10px;
+}
+
+/* ===== 観光スポットカード ===== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.25);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card h3 {
+    padding: 15px;
+    color: #0077ff;
+}
+
+.card p {
+    padding: 0 15px 20px;
+}
+
+/* ===== フッター ===== */
+
+footer {
+    margin-top: 60px;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* ===== スマホ対応 ===== */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    #language {
+        margin: 8px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+
