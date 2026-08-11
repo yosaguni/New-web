@@ -1,20 +1,60 @@
+// ===== 言語切り替え =====
+
 const languageSelect = document.getElementById("language");
 
-languageSelect.addEventListener("change", function () {
+if (languageSelect) {
 
-    const language = this.value;
+    languageSelect.addEventListener("change", function () {
 
-    const elements = document.querySelectorAll("[data-ja]");
+        const language = this.value;
 
-    elements.forEach(function (element) {
+        const elements = document.querySelectorAll("[data-ja]");
 
-        if (language === "en") {
-            element.textContent = element.getAttribute("data-en");
-        } else {
-            element.textContent = element.getAttribute("data-ja");
-        }
+        elements.forEach(function (element) {
+
+            if (language === "en") {
+                element.textContent = element.getAttribute("data-en");
+            } else {
+                element.textContent = element.getAttribute("data-ja");
+            }
+
+        });
 
     });
 
-});
+}
+
+
+// ===== 観光スポットのアニメーション =====
+
+const cards = document.querySelectorAll(".card");
+
+if (cards.length > 0) {
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    });
+
+    cards.forEach((card) => {
+
+        card.style.opacity = "0";
+        card.style.transform = "translateY(40px)";
+        card.style.transition = "0.6s";
+
+        observer.observe(card);
+
+    });
+
+}
 
