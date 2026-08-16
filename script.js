@@ -93,7 +93,7 @@ function showTown(town) {
         townInfo.innerHTML = `
             <h2>旭町</h2>
 
-            <img src="asahimachi.jpg" alt="旭町の写真">
+            <img src="asahi.jpg" alt="旭町の写真">
 
             <h3>旭町の観光スポット</h3>
 
@@ -109,7 +109,7 @@ function showTown(town) {
         townInfo.innerHTML = `
             <h2>神明町</h2>
 
-            <img src="shinmeicho.jpg" alt="神明町の写真">
+            <img src="shinmei.jpg" alt="神明町の写真">
 
             <h3>神明町の観光スポット</h3>
 
