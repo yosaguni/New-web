@@ -57,4 +57,14 @@ if (cards.length > 0) {
     });
 
 }
+function toggleTown() {
 
+    const townList = document.getElementById("town-list");
+
+    if (townList.style.display === "none" || townList.style.display === "") {
+        townList.style.display = "block";
+    } else {
+        townList.style.display = "none";
+    }
+
+}
