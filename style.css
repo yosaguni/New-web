@@ -224,3 +224,17 @@ footer {
     padding: 10px 20px;
     cursor: pointer;
 }
+.town-info {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.town-info img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    display: block;
+    margin: 15px 0;
+}

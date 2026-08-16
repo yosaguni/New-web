@@ -68,3 +68,88 @@ function toggleTown() {
     }
 
 }
+function showTown(town) {
+
+    const townInfo = document.getElementById("town-info");
+
+    if (town === "honmachi") {
+
+        townInfo.innerHTML = `
+            <h2>本町</h2>
+
+            <img src="honmachi.jpg" alt="本町の写真">
+
+            <h3>本町の観光スポット</h3>
+
+            <p>
+                本町周辺のおすすめスポットを紹介します。
+            </p>
+        `;
+
+    }
+
+    else if (town === "asahimachi") {
+
+        townInfo.innerHTML = `
+            <h2>旭町</h2>
+
+            <img src="asahimachi.jpg" alt="旭町の写真">
+
+            <h3>旭町の観光スポット</h3>
+
+            <p>
+                旭町周辺のおすすめスポットを紹介します。
+            </p>
+        `;
+
+    }
+
+    else if (town === "shinmeicho") {
+
+        townInfo.innerHTML = `
+            <h2>神明町</h2>
+
+            <img src="shinmeicho.jpg" alt="神明町の写真">
+
+            <h3>神明町の観光スポット</h3>
+
+            <p>
+                神明町周辺のおすすめスポットを紹介します。
+            </p>
+        `;
+
+    }
+
+    else if (town === "hinodemachi") {
+
+        townInfo.innerHTML = `
+            <h2>日の出町</h2>
+
+            <img src="hinodemachi.jpg" alt="日の出町の写真">
+
+            <h3>日の出町の観光スポット</h3>
+
+            <p>
+                日の出町周辺のおすすめスポットを紹介します。
+            </p>
+        `;
+
+    }
+
+    else if (town === "yanagimachi") {
+
+        townInfo.innerHTML = `
+            <h2>柳町</h2>
+
+            <img src="yanagimachi.jpg" alt="柳町の写真">
+
+            <h3>柳町の観光スポット</h3>
+
+            <p>
+                柳町周辺のおすすめスポットを紹介します。
+            </p>
+        `;
+
+    }
+
+}
