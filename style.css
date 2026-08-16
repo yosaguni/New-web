@@ -217,7 +217,12 @@ footer {
     display: none;
     margin-top: 15px;
 }
-
+.town-list button {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 .town-list button {
     display: block;
     margin: 8px 0;
