@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>mori café ― 森、時間、珈琲。</title>
+    <title>鯖江のカフェ ― mori café</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,6 @@
 
 <body>
 
-    <!-- reusable ring-mark, referenced with <use> throughout the page -->
     <svg width="0" height="0" style="position:absolute">
         <symbol id="ring-mark" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" />
@@ -33,271 +32,54 @@
 
     <!-- HEADER -->
     <header>
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <svg class="logo-ring" id="logoRing" viewBox="0 0 100 100">
                 <use href="#ring-mark"></use>
             </svg>
             <span class="logo-text">
                 <span class="logo-word">mori</span>
-                <small>CAFÉ &amp; COFFEE</small>
+                <small>CAFÉ & COFFEE</small>
             </span>
         </a>
 
         <nav>
-            <a href="#about"><span class="nav-index">木</span>ABOUT</a>
-            <a href="#menu"><span class="nav-index">豆</span>MENU</a>
-            <a href="#gallery"><span class="nav-index">景</span>GALLERY</a>
-            <a href="#access"><span class="nav-index">道</span>ACCESS</a>
-            <a href="cafes.html"><span class="nav-index">鯖</span>CAFES</a>
+            <a href="index.html">HOME</a>
+            <a href="cafes.html" class="active">CAFES</a>
         </nav>
     </header>
 
 
-    <!-- HERO -->
-    <section class="hero">
-
-        <div class="hero-image"></div>
-
-        <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
-            <use href="#ring-mark"></use>
-        </svg>
-
-        <div class="hero-content">
-            <p class="small-title">A LITTLE MOMENT OF PEACE</p>
-
-            <h1>
-                <em>Slow down,</em><br>
-                enjoy your coffee.
-            </h1>
-
-            <p class="hero-description">
-                日常から少し離れて、<br>
-                木の年輪のように、ゆっくりと流れる時間を。
-            </p>
-
-            <a href="#about" class="scroll-button">
-                <span class="scroll-ring"></span>
-                DISCOVER MORE
-            </a>
-        </div>
-
-    </section>
-
-
-    <!-- INTRO -->
-    <section class="intro">
+    <!-- PAGE INTRO -->
+    <section class="cafes-hero">
 
         <svg class="intro-watermark" viewBox="0 0 100 100" aria-hidden="true">
             <use href="#ring-mark"></use>
         </svg>
 
-        <p class="section-label">WELCOME TO MORI CAFÉ</p>
+        <p class="section-label">SABAE CAFÉ GUIDE</p>
 
-        <h2>
-            コーヒーとともに、<br>
-            心ほどける時間。
-        </h2>
+        <h1>
+            鯖江の、<br>
+            お気に入りの一杯。
+        </h1>
 
-        <p class="intro-text">
-            <span class="drop-cap">木</span>のぬくもりに包まれた空間で、
-            一杯のコーヒーとともに過ごす特別な時間。
-            年輪がひとつずつ重なるように、
-            mori caféはそんな時間を、静かに積み重ねていく場所です。
+        <p class="cafes-hero-text">
+            鯖江市内で見つけた、居心地のいいカフェや喫茶店をまとめました。
+            気になるお店があれば、ぜひ訪れてみてください。
         </p>
 
     </section>
 
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
+    <!-- CAFE LIST -->
+    <section class="cafes-list">
 
-        <div class="about-image">
-            <img src="cafe.jpg" alt="mori caféの店内">
-            <p class="margin-note">私たちの合言葉は、<br>「急がない」。</p>
+        <div class="area-filters" id="areaFilters">
+            <!-- cafes-render.js がここにエリアボタンを自動で並べます -->
         </div>
 
-        <div class="about-text">
-
-            <p class="section-label">ABOUT US</p>
-
-            <h2>
-                A quiet place<br>
-                for your everyday.
-            </h2>
-
-            <p>
-                mori caféは、落ち着いた音楽と
-                木のぬくもりを感じられる小さなカフェです。
-            </p>
-
-            <p>
-                朝のコーヒーから、午後のティータイムまで。
-                一人でも、大切な人とでも、
-                自分らしい時間をお楽しみください。
-            </p>
-
-            <a href="#menu" class="line-button">
-                OUR MENU
-                <svg viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- MENU -->
-    <section id="menu" class="menu">
-
-        <div class="menu-heading">
-
-            <div>
-                <p class="section-label">OUR MENU</p>
-
-                <h2>
-                    Simple.<br>
-                    Delicious.
-                </h2>
-            </div>
-
-            <p>
-                素材の味を大切にした、
-                シンプルで心地よいメニュー。
-            </p>
-
-        </div>
-
-
-        <div class="menu-list">
-
-            <div class="menu-item">
-                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
-                <div>
-                    <h3>Café Latte</h3>
-                    <p>まろやかで優しい味わいのカフェラテ</p>
-                </div>
-
-                <strong>¥500</strong>
-            </div>
-
-
-            <div class="menu-item">
-                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
-                <div>
-                    <h3>Hand Drip Coffee</h3>
-                    <p>一杯ずつ丁寧に淹れるハンドドリップ</p>
-                </div>
-
-                <strong>¥450</strong>
-            </div>
-
-
-            <div class="menu-item">
-                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
-                <div>
-                    <h3>Cheesecake</h3>
-                    <p>濃厚でなめらかな自家製チーズケーキ</p>
-                </div>
-
-                <strong>¥550</strong>
-            </div>
-
-
-            <div class="menu-item">
-                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
-                <div>
-                    <h3>Seasonal Sandwich</h3>
-                    <p>季節の食材を使ったサンドイッチ</p>
-                </div>
-
-                <strong>¥600</strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- GALLERY -->
-    <section id="gallery" class="gallery-section">
-
-        <div class="gallery-title">
-            <p class="section-label">MOMENTS</p>
-            <h2>Inside mori café.</h2>
-        </div>
-
-        <div class="gallery">
-
-            <div class="gallery-large">
-                <img src="cafe.jpg" alt="店内">
-            </div>
-
-            <div>
-                <img src="coffee.jpg" alt="コーヒー">
-            </div>
-
-            <div>
-                <img src="cake.jpg" alt="ケーキ">
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ACCESS -->
-    <section id="access" class="access">
-
-        <svg class="access-pattern" aria-hidden="true">
-            <defs>
-                <pattern id="grain-lines" width="80" height="80" patternUnits="userSpaceOnUse">
-                    <path d="M0 40 Q 20 20 40 40 T 80 40" fill="none" stroke="currentColor" stroke-width="1" />
-                </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grain-lines)" />
-        </svg>
-
-        <div class="access-text">
-
-            <p class="section-label">VISIT US</p>
-
-            <h2>
-                Come and<br>
-                stay awhile.
-            </h2>
-
-            <div class="info">
-
-                <p>
-                    <span><svg class="pin" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>ADDRESS</span>
-                    福井県鯖江市上中町1-2-3
-                </p>
-
-                <p>
-                    <span>OPEN</span>
-                    10:00 — 18:00
-                </p>
-
-                <p>
-                    <span>CLOSED</span>
-                    Tuesday
-                </p>
-
-                <p>
-                    <span>RATING</span>
-                    <span class="rating-row">
-                        <span class="stars" style="--rating:4.5"></span>
-                        <span class="rating-num">4.5 / 5.0</span>
-                    </span>
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="access-image">
-            <img src="cafe.jpg" alt="カフェ">
+        <div class="cafe-grid" id="cafeGrid">
+            <!-- cafes-render.js がここに自動でカードを並べます -->
         </div>
 
     </section>
@@ -326,7 +108,10 @@
 
 
     <script src="script.js"></script>
+    <script src="cafes-data.js"></script>
+    <script src="cafes-render.js"></script>
 
 </body>
 
 </html>
+
