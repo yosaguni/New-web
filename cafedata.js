@@ -56,6 +56,19 @@ const cafes = [
         comment: "自家焙煎の豆と、明るく開放的な店内が人気。",
         link: "#"
     }
+    ,
+    {
+    name: "café nagi",
+    area: "鯖江市舟津町",
+    genre: "カフェ",
+    rating: 4.0,
+    image: "nagi.jpg",
+    address: "福井県鯖江市舟津町◯-◯-◯",
+    hours: "9:30 — 17:30",
+    closed: "木曜",
+    comment: "静かな住宅街にある、隠れ家のようなカフェ。",
+    link: "#"
+}
 
     // ↑↑↑ 新しいお店を追加するときは、直前の要素の後ろに「,」を忘れずに ↑↑↑
 
