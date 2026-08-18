@@ -979,6 +979,65 @@ h2 {
 
 
 /* =========================
+   RATING (★)
+========================= */
+
+.rating-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+
+    font-size: 13px;
+    letter-spacing: normal;
+    opacity: 1;
+}
+
+
+.stars {
+    --rating: 0;
+    --max: 5;
+
+    display: inline-block;
+    position: relative;
+
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 1;
+
+    color: rgba(241, 236, 225, 0.25);
+}
+
+
+.stars::before {
+    content: "★★★★★";
+}
+
+
+.stars::after {
+    content: "★★★★★";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: calc(var(--rating) / var(--max) * 100%);
+    overflow: hidden;
+    white-space: nowrap;
+
+    color: var(--kohaku);
+}
+
+
+.rating-num {
+    font-family: var(--font-utility);
+    font-size: 11px;
+
+    color: var(--kinari);
+    opacity: 0.8;
+}
+
+
+/* =========================
    FOOTER
 ========================= */
 
