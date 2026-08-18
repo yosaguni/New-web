@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>鯖江のカフェ ― mori café</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <svg width="0" height="0" style="position:absolute">
+        <symbol id="ring-mark" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="21" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="7" fill="none" stroke="currentColor" stroke-width="1" />
+        </symbol>
+    </svg>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            <svg class="logo-ring" id="logoRing" viewBox="0 0 100 100">
+                <use href="#ring-mark"></use>
+            </svg>
+            <span class="logo-text">
+                <span class="logo-word">mori</span>
+                <small>CAFÉ & COFFEE</small>
+            </span>
+        </a>
+
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="cafes.html" class="active">CAFES</a>
+        </nav>
+    </header>
+
+
+    <!-- PAGE INTRO -->
+    <section class="cafes-hero">
+
+        <svg class="intro-watermark" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#ring-mark"></use>
+        </svg>
+
+        <p class="section-label">SABAE CAFÉ GUIDE</p>
+
+        <h1>
+            鯖江の、<br>
+            お気に入りの一杯。
+        </h1>
+
+        <p class="cafes-hero-text">
+            鯖江市内で見つけた、居心地のいいカフェや喫茶店をまとめました。
+            気になるお店があれば、ぜひ訪れてみてください。
+        </p>
+
+    </section>
+
+
+    <!-- CAFE LIST -->
+    <section class="cafes-list">
+
+        <div class="area-filters" id="areaFilters">
+            <!-- cafes-render.js がここにエリアボタンを自動で並べます -->
+        </div>
+
+        <div class="cafe-grid" id="cafeGrid">
+            <!-- cafes-render.js がここに自動でカードを並べます -->
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <svg class="footer-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#ring-mark"></use>
+        </svg>
+
+        <div class="footer-logo">
+            mori
+        </div>
+
+        <p>
+            CAFÉ & COFFEE
+        </p>
+
+        <small>
+            © 2026 mori café
+        </small>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script src="cafes-data.js"></script>
+    <script src="cafes-render.js"></script>
+
+</body>
+
+</html>

@@ -979,6 +979,229 @@ h2 {
 
 
 /* =========================
+   CAFES DIRECTORY PAGE
+========================= */
+
+.cafes-hero {
+    position: relative;
+
+    max-width: 780px;
+
+    margin: auto;
+
+    padding: 190px 30px 100px;
+
+    text-align: center;
+}
+
+
+.cafes-hero h1 {
+    font-family: var(--font-jp-head);
+    font-weight: 600;
+
+    font-size: clamp(38px, 5vw, 60px);
+
+    line-height: 1.3;
+
+    margin-bottom: 30px;
+}
+
+
+.cafes-hero-text {
+    max-width: 520px;
+
+    margin: auto;
+
+    line-height: 2.2;
+
+    color: var(--sumi-soft);
+}
+
+
+.cafes-list {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 0 6% 160px;
+}
+
+
+.area-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-bottom: 55px;
+
+    border-bottom: 1px solid var(--washi);
+}
+
+
+.area-filter-btn {
+    position: relative;
+
+    font-family: var(--font-utility);
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    color: var(--sumi-soft);
+
+    background: transparent;
+
+    border: none;
+
+    padding: 14px 22px;
+
+    cursor: pointer;
+
+    transition: color 0.3s;
+}
+
+
+.area-filter-btn::after {
+    content: "";
+
+    position: absolute;
+
+    left: 22px;
+    right: 22px;
+    bottom: -1px;
+
+    height: 2px;
+
+    background: var(--kohaku);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.3s ease;
+}
+
+
+.area-filter-btn:hover {
+    color: var(--sumi);
+}
+
+
+.area-filter-btn.active {
+    color: var(--sumi);
+    font-weight: 500;
+}
+
+
+.area-filter-btn.active::after {
+    transform: scaleX(1);
+}
+
+
+.cafe-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    gap: 30px;
+}
+
+
+.cafe-card {
+    display: flex;
+    flex-direction: column;
+
+    background: white;
+
+    text-decoration: none;
+    color: var(--sumi);
+
+    overflow: hidden;
+
+    box-shadow: 0 14px 34px rgba(36, 31, 26, 0.08);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.cafe-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 20px 40px rgba(36, 31, 26, 0.14);
+}
+
+
+.cafe-card-image {
+    height: 210px;
+
+    overflow: hidden;
+}
+
+
+.cafe-card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.8s ease;
+}
+
+
+.cafe-card:hover .cafe-card-image img {
+    transform: scale(1.06);
+}
+
+
+.cafe-card-body {
+    padding: 24px 26px 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.cafe-card-genre {
+    font-family: var(--font-utility);
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: var(--kohaku);
+}
+
+
+.cafe-card-body h3 {
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.cafe-card-comment {
+    font-size: 13px;
+    line-height: 1.9;
+
+    color: var(--sumi-soft);
+}
+
+
+.cafe-card-meta {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: var(--font-utility);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+
+    color: var(--sumi-soft);
+
+    margin-top: 4px;
+
+    padding-top: 14px;
+
+    border-top: 1px solid var(--washi);
+}
+
+
+/* =========================
    RATING (★)
 ========================= */
 
@@ -1034,6 +1257,19 @@ h2 {
 
     color: var(--kinari);
     opacity: 0.8;
+}
+
+
+/* light-background version, for use on white café cards */
+
+.stars--light {
+    color: var(--washi);
+}
+
+
+.rating-num--light {
+    color: var(--sumi-soft);
+    opacity: 1;
 }
 
 
