@@ -5,25 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>mori café</title>
+    <title>mori café ― 森、時間、珈琲。</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- reusable ring-mark, referenced with <use> throughout the page -->
+    <svg width="0" height="0" style="position:absolute">
+        <symbol id="ring-mark" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="21" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="7" fill="none" stroke="currentColor" stroke-width="1" />
+        </symbol>
+    </svg>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <!-- HEADER -->
     <header>
-        <div class="logo">
-            <span>mori</span>
-            <small>CAFÉ & COFFEE</small>
-        </div>
+        <a href="#" class="logo">
+            <svg class="logo-ring" id="logoRing" viewBox="0 0 100 100">
+                <use href="#ring-mark"></use>
+            </svg>
+            <span class="logo-text">
+                <span class="logo-word">mori</span>
+                <small>CAFÉ &amp; COFFEE</small>
+            </span>
+        </a>
 
         <nav>
-            <a href="#about">ABOUT</a>
-            <a href="#menu">MENU</a>
-            <a href="#gallery">GALLERY</a>
-            <a href="#access">ACCESS</a>
+            <a href="#about"><span class="nav-index">木</span>ABOUT</a>
+            <a href="#menu"><span class="nav-index">豆</span>MENU</a>
+            <a href="#gallery"><span class="nav-index">景</span>GALLERY</a>
+            <a href="#access"><span class="nav-index">道</span>ACCESS</a>
         </nav>
     </header>
 
@@ -33,21 +57,26 @@
 
         <div class="hero-image"></div>
 
+        <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#ring-mark"></use>
+        </svg>
+
         <div class="hero-content">
             <p class="small-title">A LITTLE MOMENT OF PEACE</p>
 
             <h1>
-                Slow down,<br>
+                <em>Slow down,</em><br>
                 enjoy your coffee.
             </h1>
 
             <p class="hero-description">
                 日常から少し離れて、<br>
-                ゆっくりと流れる時間を。
+                木の年輪のように、ゆっくりと流れる時間を。
             </p>
 
             <a href="#about" class="scroll-button">
-                DISCOVER MORE ↓
+                <span class="scroll-ring"></span>
+                DISCOVER MORE
             </a>
         </div>
 
@@ -57,6 +86,10 @@
     <!-- INTRO -->
     <section class="intro">
 
+        <svg class="intro-watermark" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#ring-mark"></use>
+        </svg>
+
         <p class="section-label">WELCOME TO MORI CAFÉ</p>
 
         <h2>
@@ -65,9 +98,10 @@
         </h2>
 
         <p class="intro-text">
-            木のぬくもりに包まれた空間で、
+            <span class="drop-cap">木</span>のぬくもりに包まれた空間で、
             一杯のコーヒーとともに過ごす特別な時間。
-            mori caféは、そんな場所を目指しています。
+            年輪がひとつずつ重なるように、
+            mori caféはそんな時間を、静かに積み重ねていく場所です。
         </p>
 
     </section>
@@ -78,6 +112,7 @@
 
         <div class="about-image">
             <img src="cafe.jpg" alt="mori caféの店内">
+            <p class="margin-note">私たちの合言葉は、<br>「急がない」。</p>
         </div>
 
         <div class="about-text">
@@ -101,7 +136,8 @@
             </p>
 
             <a href="#menu" class="line-button">
-                OUR MENU →
+                OUR MENU
+                <svg viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
             </a>
 
         </div>
@@ -134,8 +170,8 @@
         <div class="menu-list">
 
             <div class="menu-item">
+                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
                 <div>
-                    <span class="menu-number">01</span>
                     <h3>Café Latte</h3>
                     <p>まろやかで優しい味わいのカフェラテ</p>
                 </div>
@@ -145,8 +181,8 @@
 
 
             <div class="menu-item">
+                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
                 <div>
-                    <span class="menu-number">02</span>
                     <h3>Hand Drip Coffee</h3>
                     <p>一杯ずつ丁寧に淹れるハンドドリップ</p>
                 </div>
@@ -156,8 +192,8 @@
 
 
             <div class="menu-item">
+                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
                 <div>
-                    <span class="menu-number">03</span>
                     <h3>Cheesecake</h3>
                     <p>濃厚でなめらかな自家製チーズケーキ</p>
                 </div>
@@ -167,8 +203,8 @@
 
 
             <div class="menu-item">
+                <svg class="menu-mark" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>
                 <div>
-                    <span class="menu-number">04</span>
                     <h3>Seasonal Sandwich</h3>
                     <p>季節の食材を使ったサンドイッチ</p>
                 </div>
@@ -211,6 +247,15 @@
     <!-- ACCESS -->
     <section id="access" class="access">
 
+        <svg class="access-pattern" aria-hidden="true">
+            <defs>
+                <pattern id="grain-lines" width="80" height="80" patternUnits="userSpaceOnUse">
+                    <path d="M0 40 Q 20 20 40 40 T 80 40" fill="none" stroke="currentColor" stroke-width="1" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grain-lines)" />
+        </svg>
+
         <div class="access-text">
 
             <p class="section-label">VISIT US</p>
@@ -223,7 +268,7 @@
             <div class="info">
 
                 <p>
-                    <span>ADDRESS</span>
+                    <span><svg class="pin" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>ADDRESS</span>
                     福井県鯖江市上中町1-2-3
                 </p>
 
@@ -251,6 +296,10 @@
 
     <!-- FOOTER -->
     <footer>
+
+        <svg class="footer-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <use href="#ring-mark"></use>
+        </svg>
 
         <div class="footer-logo">
             mori
