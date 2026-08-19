@@ -130,7 +130,7 @@ svg[viewBox="0 0 100 100"] use,
 .logo-ring,
 .hero-ring,
 .intro-watermark,
-.menu-mark,
+.story-watermark,
 .footer-ring {
     color: currentColor;
 }
@@ -661,120 +661,62 @@ h2 {
 
 
 /* =========================
-   MENU
+   STORY
 ========================= */
 
-.menu {
-    background: var(--washi);
+.story {
+    position: relative;
 
-    padding: 140px 8%;
-}
+    text-align: center;
 
-
-.menu-heading {
-    max-width: 1100px;
+    max-width: 720px;
 
     margin: auto;
 
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    margin-bottom: 80px;
+    padding: 160px 30px;
 }
 
 
-.menu-heading h2 {
-    font-size: clamp(55px, 7vw, 95px);
+.story-watermark {
+    position: absolute;
 
-    line-height: 0.9;
+    top: 50%;
+    left: 50%;
+
+    width: 560px;
+    height: 560px;
+
+    transform: translate(-50%, -50%);
+
+    color: var(--sumi);
+    opacity: 0.03;
+
+    z-index: -1;
 }
 
 
-.menu-heading > p {
-    width: 300px;
+.story h2 {
+    font-size: clamp(38px, 5vw, 60px);
 
-    line-height: 2;
+    line-height: 1.3;
+
+    margin-bottom: 45px;
+}
+
+
+.story-text {
+    max-width: 560px;
+
+    margin: 0 auto 24px;
+
+    line-height: 2.3;
 
     color: var(--sumi-soft);
 }
 
 
-.menu-list {
-    max-width: 1100px;
-
-    margin: auto;
-}
-
-
-.menu-item {
-    border-top: 1px solid rgba(36, 31, 26, 0.2);
-
-    padding: 32px 0;
-
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-
-.menu-item > div {
-    flex: 1;
-}
-
-
-.menu-item:last-child {
-    border-bottom: 1px solid rgba(36, 31, 26, 0.2);
-}
-
-
-.menu-mark {
-    width: 22px;
-    height: 22px;
-
-    flex-shrink: 0;
-
-    color: var(--kohaku);
-
-    opacity: 0.8;
-
-    transition: transform 0.6s ease;
-}
-
-
-.menu-item:hover .menu-mark {
-    transform: rotate(120deg);
-}
-
-
-.menu-item h3 {
-    font-family: var(--font-display);
-
-    font-style: italic;
-
-    font-size: 27px;
-
-    font-weight: 500;
-
-    margin-bottom: 6px;
-}
-
-
-.menu-item p {
-    color: var(--sumi-soft);
-
-    font-size: 12px;
-}
-
-
-.menu-item strong {
-    font-family: var(--font-jp-head);
-
-    font-size: 22px;
-
-    font-weight: 500;
+.story-text:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -1024,6 +966,270 @@ h2 {
     margin: auto;
 
     padding: 0 6% 160px;
+}
+
+
+/* =========================
+   SWIPE & DISCOVER
+========================= */
+
+.swipe-section {
+    max-width: 1200px;
+
+    margin: 0 auto 100px;
+
+    padding: 0 6%;
+}
+
+
+.swipe-label {
+    margin-bottom: 20px;
+}
+
+
+.swipe-strip {
+    display: flex;
+
+    gap: 14px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+
+    scroll-snap-type: x proximity;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.swipe-strip::-webkit-scrollbar {
+    height: 4px;
+}
+
+
+.swipe-strip::-webkit-scrollbar-thumb {
+    background: var(--washi);
+}
+
+
+.swipe-item {
+    position: relative;
+
+    flex: 0 0 220px;
+
+    height: 280px;
+
+    scroll-snap-align: start;
+
+    border: none;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
+
+    transition: transform 0.4s ease;
+}
+
+
+.swipe-item::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to top, rgba(24, 20, 16, 0.75), transparent 55%);
+}
+
+
+.swipe-item:hover {
+    transform: translateY(-4px);
+}
+
+
+.swipe-item-label {
+    position: absolute;
+
+    left: 18px;
+    bottom: 16px;
+
+    z-index: 1;
+
+    color: var(--kinari);
+
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 16px;
+
+    text-align: left;
+}
+
+
+/* =========================
+   DETAIL MODAL
+========================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1300;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(24, 20, 16, 0.72);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.35s ease;
+}
+
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 460px;
+
+    max-height: 86vh;
+
+    overflow-y: auto;
+
+    background: var(--kinari);
+
+    box-shadow: 0 30px 60px rgba(24, 20, 16, 0.35);
+
+    transform: translateY(24px) scale(0.98);
+
+    transition: transform 0.4s ease;
+}
+
+
+.modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+}
+
+
+.modal-close {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    z-index: 2;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(24, 20, 16, 0.55);
+    color: white;
+
+    font-size: 20px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+.modal-image {
+    height: 220px;
+
+    overflow: hidden;
+}
+
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.modal-body {
+    padding: 28px 28px 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.modal-genre {
+    font-family: var(--font-utility);
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: var(--kohaku);
+}
+
+
+.modal-body h3 {
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 24px;
+}
+
+
+.modal-comment {
+    font-size: 13px;
+    line-height: 1.9;
+
+    color: var(--sumi-soft);
+}
+
+
+.modal-meta {
+    margin-top: 6px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--washi);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.modal-meta p {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    font-size: 12px;
+
+    color: var(--sumi-soft);
+}
+
+
+.modal-meta span:first-child {
+    font-family: var(--font-utility);
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    color: var(--sumi);
+
+    flex-shrink: 0;
 }
 
 
@@ -1347,7 +1553,7 @@ footer small {
 ========================= */
 
 .about,
-.menu,
+.story,
 .gallery-section,
 .access,
 .intro {
@@ -1378,7 +1584,7 @@ footer small {
     }
 
     .about,
-    .menu,
+    .story,
     .gallery-section,
     .access,
     .intro {
@@ -1395,6 +1601,18 @@ footer small {
 ========================= */
 
 @media (max-width: 700px) {
+
+    .swipe-item {
+        flex: 0 0 160px;
+
+        height: 210px;
+    }
+
+
+    .modal-image {
+        height: 170px;
+    }
+
 
     header {
         padding: 16px 20px;
@@ -1484,25 +1702,8 @@ footer small {
     }
 
 
-    .menu {
-        padding: 100px 25px;
-    }
-
-
-    .menu-heading {
-        display: block;
-    }
-
-
-    .menu-heading > p {
-        width: auto;
-
-        margin-top: 30px;
-    }
-
-
-    .menu-item p {
-        max-width: 220px;
+    .story {
+        padding: 110px 25px;
     }
 
 
