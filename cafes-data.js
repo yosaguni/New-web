@@ -17,40 +17,40 @@
 const cafes = [
 
     {
-        name: "mori café",
-        area: "鯖江市上中町",
-        genre: "カフェ・コーヒー",
-        rating: 4.5,
+        name: "季節のおやつ  しずく",
+        area: "鯖江市下河端町",
+        genre: "ベーグル専門店",
+        rating: 4.0,
         image: "cafe.jpg",
-        address: "福井県鯖江市上中町1-2-3",
+        address: "福井県鯖江市下河端町57-58",
         hours: "10:00 — 18:00",
-        closed: "火曜",
-        comment: "木のぬくもりに包まれた、静かな時間を過ごせるカフェ。",
+        closed: "月曜 ・ 日曜",
+        comment: "焼菓子とベーグルの小さな隠れ家店🏠。",
         link: "index.html"
-    },
+    
 
     // ↓↓↓ ここから下に、新しいお店をコピーして追加していきます ↓↓↓
 
     {
-        name: "喫茶 木漏れ日",
-        area: "鯖江市神中町",
-        genre: "喫茶店",
-        rating: 4.2,
+        name: "農家でおやつ屋さん うちのぶどう",
+        area: "鯖江市下新庄町",
+        genre: "菓子店",
+        rating: 4.4,
         image: "komorebi.jpg",
-        address: "福井県鯖江市神中町◯-◯-◯",
-        hours: "9:00 — 17:00",
-        closed: "水曜",
-        comment: "昔ながらの喫茶店で、丁寧に淹れたコーヒーが自慢。",
+        address: "福井県鯖江市下新庄町57-51",
+        hours: "10:00 — 18:30",
+        closed: "月曜",
+        comment: "素材本来の美味しさを大切に",
         link: "#"
     },
 
     {
-        name: "Roast & Roots",
-        area: "鯖江市水落町",
-        genre: "自家焙煎コーヒー",
-        rating: 4.8,
+        name: "からだあいがん",
+        area: "鯖江市新横江",
+        genre: "カフェ・自然食品店",
+        rating: 4.3,
         image: "roastroots.jpg",
-        address: "福井県鯖江市水落町◯-◯-◯",
+        address: "福井県鯖江市水落町1-514",
         hours: "8:00 — 18:00",
         closed: "月曜",
         comment: "自家焙煎の豆と、明るく開放的な店内が人気。",
@@ -58,15 +58,15 @@ const cafes = [
     }
     ,
     {
-    name: "café nagi",
-    area: "鯖江市舟津町",
-    genre: "カフェ",
-    rating: 4.0,
+    name: "スローベリィ",
+    area: "鯖江市水落町",
+    genre: "カフェ・喫茶",
+    rating: 3.8,
     image: "nagi.jpg",
-    address: "福井県鯖江市舟津町◯-◯-◯",
-    hours: "9:30 — 17:30",
-    closed: "木曜",
-    comment: "静かな住宅街にある、隠れ家のようなカフェ。",
+    address: "福井県鯖江市水落町28-25",
+    hours: "10:00 — 18:30",
+    closed: "水曜",
+    comment: "フルーツ専門店プロデュースのスイーツ＆自然派カフェ。",
     link: "#"
 }
 

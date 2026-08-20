@@ -1,9 +1,10 @@
 // =========================================================
-// cafes-data.js の内容をもとに、カフェカードとエリアフィルターを自動で並べる
+// cafes-data.js の内容をもとに、カフェカード・スワイプ帯・
+// エリアフィルターを自動で並べる
 // このファイルは基本的に編集不要です。
 // =========================================================
 
-function cafeCardHTML(cafe) {
+function cafeCardHTML(cafe, index) {
 
     const ratingText = Number(cafe.rating).toFixed(1);
 
@@ -36,17 +37,52 @@ function cafeCardHTML(cafe) {
 }
 
 
+function swipeItemHTML(cafe, index) {
+
+    return `
+        <button class="swipe-item" data-index="${index}" style="background-image:url('${cafe.image}')">
+            <span class="swipe-item-label">${cafe.name}</span>
+        </button>
+    `;
+
+}
+
+
 function renderCafes() {
 
     const grid = document.getElementById("cafeGrid");
     const filters = document.getElementById("areaFilters");
+    const strip = document.getElementById("swipeStrip");
 
-    if (!grid || typeof cafes === "undefined") {
+    if (typeof cafes === "undefined") {
         return;
     }
 
     // カードを描画
-    grid.innerHTML = cafes.map(cafeCardHTML).join("");
+    if (grid) {
+        grid.innerHTML = cafes.map(cafeCardHTML).join("");
+    }
+
+    // スワイプ帯を描画
+    if (strip) {
+
+        strip.innerHTML = cafes.map(swipeItemHTML).join("");
+
+        strip.querySelectorAll(".swipe-item").forEach((item) => {
+
+            item.addEventListener("click", () => {
+
+                const cafe = cafes[Number(item.dataset.index)];
+
+                if (cafe) {
+                    openCafeModal(cafe);
+                }
+
+            });
+
+        });
+
+    }
 
     if (!filters) {
         return;
@@ -92,4 +128,80 @@ function renderCafes() {
 }
 
 
-document.addEventListener("DOMContentLoaded", renderCafes);
+// =========================================================
+// 詳細モーダル
+// =========================================================
+
+function openCafeModal(cafe) {
+
+    const overlay = document.getElementById("modalOverlay");
+
+    if (!overlay) {
+        return;
+    }
+
+    document.getElementById("modalImage").src = cafe.image;
+    document.getElementById("modalImage").alt = cafe.name;
+    document.getElementById("modalGenre").textContent = `${cafe.genre} ・ ${cafe.area}`;
+    document.getElementById("modalName").textContent = cafe.name;
+    document.getElementById("modalComment").textContent = cafe.comment;
+    document.getElementById("modalStars").style.setProperty("--rating", cafe.rating);
+    document.getElementById("modalRatingNum").textContent = `${Number(cafe.rating).toFixed(1)} / 5.0`;
+    document.getElementById("modalAddress").textContent = cafe.address;
+    document.getElementById("modalHours").textContent = cafe.hours;
+    document.getElementById("modalClosed").textContent = cafe.closed;
+
+    overlay.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeCafeModal() {
+
+    const overlay = document.getElementById("modalOverlay");
+
+    if (!overlay) {
+        return;
+    }
+
+    overlay.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    renderCafes();
+
+    const overlay = document.getElementById("modalOverlay");
+    const closeBtn = document.getElementById("modalClose");
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeCafeModal);
+    }
+
+    if (overlay) {
+
+        overlay.addEventListener("click", (e) => {
+
+            if (e.target === overlay) {
+                closeCafeModal();
+            }
+
+        });
+
+    }
+
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape") {
+            closeCafeModal();
+        }
+
+    });
+
+});
