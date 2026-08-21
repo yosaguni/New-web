@@ -1573,26 +1573,83 @@ footer small {
     transform: translateY(0);
 }
 
+/* =========================
+   MENU
+========================= */
 
-@media (prefers-reduced-motion: reduce) {
+.menu {
+    max-width: 1200px;
+    margin: auto;
+    padding: 160px 6%;
+}
 
-    .hero-image,
-    .hero-ring,
-    .hero-ring circle,
-    .scroll-ring::after {
-        animation: none !important;
-    }
+.menu-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 70px;
+}
 
-    .about,
-    .story,
-    .gallery-section,
-    .access,
-    .intro {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
+.menu-heading h2 {
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.2;
+}
 
+.menu-heading p {
+    max-width: 320px;
+    color: var(--sumi-soft);
+    line-height: 2;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    padding: 26px 0;
+
+    border-top: 1px solid var(--washi);
+}
+
+.menu-item:last-child {
+    border-bottom: 1px solid var(--washi);
+}
+
+.menu-mark {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    color: var(--kohaku);
+    opacity: 0.7;
+}
+
+.menu-item > div {
+    flex: 1;
+}
+
+.menu-item h3 {
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+.menu-item p {
+    font-size: 13px;
+    color: var(--sumi-soft);
+}
+
+.menu-item strong {
+    font-family: var(--font-utility);
+    font-size: 15px;
+    letter-spacing: 0.5px;
 }
 
 
@@ -1604,142 +1661,116 @@ footer small {
 
     .swipe-item {
         flex: 0 0 160px;
-
         height: 210px;
     }
-
 
     .modal-image {
         height: 170px;
     }
 
-
     header {
         padding: 16px 20px;
     }
-
 
     nav {
         gap: 10px;
     }
 
-
     nav a {
         font-size: 8px;
-
         letter-spacing: 1px;
     }
-
 
     .nav-index {
         display: none;
     }
 
-
     .logo-word {
         font-size: 22px;
     }
-
 
     .logo-ring {
         width: 26px;
         height: 26px;
     }
 
-
     .hero-content {
         left: 7%;
         bottom: 12%;
     }
 
-
     .hero h1 {
         font-size: 50px;
     }
 
-
     .hero-ring {
         width: 260px;
         height: 260px;
-
         right: -60px;
         top: -60px;
     }
 
-
     .intro {
         padding: 110px 25px;
     }
-
 
     .intro-watermark {
         width: 380px;
         height: 380px;
     }
 
-
     .about {
         grid-template-columns: 1fr;
-
         gap: 60px;
-
         padding: 50px 25px 100px;
     }
-
 
     .about-image img {
         height: 400px;
     }
 
-
     .margin-note {
         right: 10px;
         bottom: -30px;
-
         max-width: 160px;
-
         font-size: 12px;
     }
-
 
     .story {
         padding: 110px 25px;
     }
 
-
     .gallery-section {
         padding: 100px 20px;
     }
 
-
     .gallery {
         grid-template-columns: 1fr;
     }
-
 
     .gallery img,
     .gallery-large img {
         min-height: 350px;
     }
 
-
     .access {
         grid-template-columns: 1fr;
-
         padding: 100px 25px;
-
         gap: 60px;
     }
-
 
     .access-image img {
         height: 400px;
     }
 
-
     .footer-ring {
         width: 400px;
         height: 400px;
+    }
+
+    .menu-heading {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
 }
