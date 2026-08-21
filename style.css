@@ -291,7 +291,7 @@ nav a:hover::after {
             rgba(24, 20, 16, 0.4),
             rgba(24, 20, 16, 0.45)
         ),
-        url("cafe.jpg");
+        url("cafes.jpg");
 
     background-size: cover;
     background-position: center;
