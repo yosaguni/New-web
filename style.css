@@ -1652,6 +1652,33 @@ footer small {
     letter-spacing: 0.5px;
 }
 
+/* =========================
+   MAP
+========================= */
+
+.map-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 160px 6% 0;
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.map-item {
+    height: 280px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(36, 31, 26, 0.08);
+}
+
+.map-item iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 
 /* =========================
    MOBILE
@@ -1771,6 +1798,14 @@ footer small {
     .menu-heading {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .map-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-item {
+        height: 220px;
     }
 
 }
