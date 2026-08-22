@@ -1233,6 +1233,19 @@ h2 {
 }
 
 
+.modal-map {
+    margin-top: 16px;
+    height: 180px;
+    overflow: hidden;
+}
+
+.modal-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
 .area-filters {
     display: flex;
     flex-wrap: wrap;

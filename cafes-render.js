@@ -151,6 +151,9 @@ function openCafeModal(cafe) {
     document.getElementById("modalHours").textContent = cafe.hours;
     document.getElementById("modalClosed").textContent = cafe.closed;
 
+    document.getElementById("modalMapFrame").src =
+        `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
+
     overlay.classList.add("open");
 
     document.body.style.overflow = "hidden";
