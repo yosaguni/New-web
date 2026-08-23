@@ -155,44 +155,48 @@ body.intro-active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 22px;
+    gap: 26px;
 
     background: var(--sumi);
 
     clip-path: circle(150% at 50% 50%);
 
     transition:
-        clip-path 1.1s cubic-bezier(.76, 0, .24, 1) 1.9s,
-        opacity 0.6s ease 2.4s;
+        clip-path 1s cubic-bezier(.83, 0, .17, 1) 2s,
+        transform 1s cubic-bezier(.83, 0, .17, 1) 2s,
+        opacity 0.5s ease 2.5s;
 }
 
 
 .intro-loader.hide {
     clip-path: circle(0% at 50% 50%);
+    transform: scale(0.96);
     opacity: 0;
     pointer-events: none;
 }
 
 
 .intro-loader-ring {
-    width: 84px;
-    height: 84px;
+    width: 72px;
+    height: 72px;
 
     color: var(--kinari);
 }
 
 
 .intro-loader-ring circle {
+    stroke-width: 0.6;
+
     stroke-dasharray: 300;
     stroke-dashoffset: 300;
 
-    animation: introRingDraw 1.5s ease forwards;
+    animation: introRingDraw 1.3s cubic-bezier(.65, 0, .35, 1) forwards;
 }
 
-.intro-loader-ring circle:nth-child(1) { animation-delay: 0.1s; }
-.intro-loader-ring circle:nth-child(2) { animation-delay: 0.3s; }
-.intro-loader-ring circle:nth-child(3) { animation-delay: 0.5s; }
-.intro-loader-ring circle:nth-child(4) { animation-delay: 0.7s; }
+.intro-loader-ring circle:nth-child(1) { animation-delay: 0s; }
+.intro-loader-ring circle:nth-child(2) { animation-delay: 0.08s; }
+.intro-loader-ring circle:nth-child(3) { animation-delay: 0.16s; }
+.intro-loader-ring circle:nth-child(4) { animation-delay: 0.24s; }
 
 
 @keyframes introRingDraw {
@@ -208,40 +212,71 @@ body.intro-active {
     align-items: center;
 
     color: var(--kinari);
-
-    opacity: 0;
-    transform: translateY(14px);
-
-    animation: introTextIn 1s ease forwards 0.9s;
-}
-
-
-@keyframes introTextIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 
 .intro-loader-word {
     font-family: var(--font-display);
     font-style: italic;
-    font-weight: 500;
+    font-weight: 400;
 
-    font-size: 44px;
-    letter-spacing: 2px;
+    font-size: 40px;
+    letter-spacing: 14px;
+
+    opacity: 0;
+
+    animation: introWordIn 1.2s cubic-bezier(.16, 1, .3, 1) forwards 0.5s;
+}
+
+
+@keyframes introWordIn {
+    from {
+        opacity: 0;
+        letter-spacing: 14px;
+    }
+    to {
+        opacity: 1;
+        letter-spacing: 2px;
+    }
+}
+
+
+.intro-loader-line {
+    display: block;
+
+    width: 0;
+    height: 1px;
+
+    margin: 14px 0;
+
+    background: var(--kohaku);
+
+    animation: introLineIn 0.9s cubic-bezier(.65, 0, .35, 1) forwards 1.5s;
+}
+
+
+@keyframes introLineIn {
+    to {
+        width: 64px;
+    }
 }
 
 
 .intro-loader-text small {
     font-family: var(--font-utility);
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 6px;
 
-    margin-top: 6px;
+    opacity: 0;
 
-    opacity: 0.7;
+    animation: introSmallIn 0.8s ease forwards 1.8s;
+}
+
+
+@keyframes introSmallIn {
+    to {
+        opacity: 0.6;
+    }
 }
 
 
