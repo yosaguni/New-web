@@ -14,7 +14,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="intro-active">
+
+    <!-- INTRO LOADER : 開いた瞬間の演出 -->
+    <div class="intro-loader" id="introLoader">
+
+        <svg class="intro-loader-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="21" fill="none" stroke="currentColor" stroke-width="1" />
+            <circle cx="50" cy="50" r="7" fill="none" stroke="currentColor" stroke-width="1" />
+        </svg>
+
+        <div class="intro-loader-text">
+            <span class="intro-loader-word">Sabae</span>
+            <small>FOOD &amp; CAFE</small>
+        </div>
+
+    </div>
 
     <!-- reusable ring-mark, referenced with <use> throughout the page -->
     <svg width="0" height="0" style="position:absolute">
@@ -253,6 +270,26 @@
 
 
     <script src="script.js"></script>
+
+    <script>
+        // 開いた瞬間のイントロ演出：一定時間後に円形にワイプして消す
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("introLoader");
+
+            if (!loader) return;
+
+            setTimeout(() => {
+                loader.classList.add("hide");
+                document.body.classList.remove("intro-active");
+            }, 200);
+
+            loader.addEventListener("transitionend", (e) => {
+                if (e.propertyName === "clip-path") {
+                    loader.remove();
+                }
+            });
+        });
+    </script>
 
     <script>
         // ギャラリー画像をタップすると店名ラベルが表示/非表示
