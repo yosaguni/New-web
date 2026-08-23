@@ -812,6 +812,43 @@ h2 {
 }
 
 
+/* ---- タップ／ホバーで店名を表示するラベル ---- */
+
+.gallery-tap {
+    cursor: pointer;
+}
+
+
+.gallery-label {
+    position: absolute;
+
+    left: 20px;
+    bottom: 20px;
+
+    z-index: 2;
+
+    color: var(--kinari);
+
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 16px;
+
+    opacity: 0;
+    transform: translateY(8px);
+
+    transition: opacity 0.35s ease, transform 0.35s ease;
+
+    pointer-events: none;
+}
+
+
+.gallery-tap.tapped .gallery-label,
+.gallery-tap:hover .gallery-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* =========================
    ACCESS
 ========================= */

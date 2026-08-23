@@ -153,16 +153,19 @@
 
         <div class="gallery">
 
-            <div class="gallery-large">
-                <img src="green.jpg" alt="メニュー">
+            <div class="gallery-large gallery-tap" data-name="季節のおやつ しずく">
+                <img src="green.jpg" alt="季節のおやつ しずく">
+                <span class="gallery-label">季節のおやつ しずく</span>
             </div>
 
-            <div>
-                <img src="donat.jpg" alt="コーヒー">
+            <div class="gallery-tap" data-name="からだあいがん">
+                <img src="donat.jpg" alt="からだあいがん">
+                <span class="gallery-label">からだあいがん</span>
             </div>
 
-            <div>
-                <img src="sand.jpg" alt="ケーキ">
+            <div class="gallery-tap" data-name="ドルチェ">
+                <img src="sand.jpg" alt="ドルチェ">
+                <span class="gallery-label">ドルチェ</span>
             </div>
 
         </div>
@@ -250,6 +253,15 @@
 
 
     <script src="script.js"></script>
+
+    <script>
+        // ギャラリー画像をタップすると店名ラベルが表示/非表示
+        document.querySelectorAll(".gallery-tap").forEach((item) => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("tapped");
+            });
+        });
+    </script>
 
 </body>
 
