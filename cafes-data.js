@@ -6,7 +6,7 @@ const cafes = [
         genre: "ベーグル専門店",
         rating: 4.0,
         image: "shizuku.jpg",
-        address: "福井県鯖江市下河端町57-58",
+        address: "〒916-0038 福井県鯖江市下河端町57-58",
         hours: "10:00 — 18:00",
         closed: "月曜 ・ 日曜",
         comment: "焼菓子とベーグルの小さな隠れ家店🏠。",
