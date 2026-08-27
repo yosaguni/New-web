@@ -104,8 +104,7 @@ function renderCafes() {
         const button = e.target.closest(".area-filter-btn");
 
         if (!button) {
-            return;
-        }
+            retu
 
         filters.querySelectorAll(".area-filter-btn").forEach((btn) => {
             btn.classList.remove("active");
@@ -152,7 +151,9 @@ function openCafeModal(cafe) {
     document.getElementById("modalClosed").textContent = cafe.closed;
 
     document.getElementById("modalMapFrame").src =
-        `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
+    cafe.lat && cafe.lng
+        ? `https://www.google.com/maps?q=${cafe.lat},${cafe.lng}&output=embed`
+        : `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
 
     overlay.classList.add("open");
 
