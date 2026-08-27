@@ -104,7 +104,8 @@ function renderCafes() {
         const button = e.target.closest(".area-filter-btn");
 
         if (!button) {
-            retu
+            return;
+        }
 
         filters.querySelectorAll(".area-filter-btn").forEach((btn) => {
             btn.classList.remove("active");
@@ -131,6 +132,19 @@ function renderCafes() {
 // 詳細モーダル
 // =========================================================
 
+function getCafeMapEmbedUrl(cafe) {
+
+    // lat / lng が指定されていれば、その座標をピンポイントで表示する
+    if (typeof cafe.lat === "number" && typeof cafe.lng === "number") {
+        return `https://www.google.com/maps?q=${cafe.lat},${cafe.lng}&output=embed`;
+    }
+
+    // 指定がなければ、住所から自動検索した場所を表示する
+    return `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
+
+}
+
+
 function openCafeModal(cafe) {
 
     const overlay = document.getElementById("modalOverlay");
@@ -150,10 +164,7 @@ function openCafeModal(cafe) {
     document.getElementById("modalHours").textContent = cafe.hours;
     document.getElementById("modalClosed").textContent = cafe.closed;
 
-    document.getElementById("modalMapFrame").src =
-    cafe.lat && cafe.lng
-        ? `https://www.google.com/maps?q=${cafe.lat},${cafe.lng}&output=embed`
-        : `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
+    document.getElementById("modalMapFrame").src = getCafeMapEmbedUrl(cafe);
 
     overlay.classList.add("open");
 
