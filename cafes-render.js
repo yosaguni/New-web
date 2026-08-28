@@ -134,6 +134,12 @@ function renderCafes() {
 
 function getCafeMapEmbedUrl(cafe) {
 
+    // mapEmbed が指定されていれば、それを最優先で使う
+    // （Googleマップの「共有 → 地図を埋め込む」でコピーしたURLをそのまま貼れる）
+    if (cafe.mapEmbed) {
+        return cafe.mapEmbed;
+    }
+
     // lat / lng が指定されていれば、その座標をピンポイントで表示する
     if (typeof cafe.lat === "number" && typeof cafe.lng === "number") {
         return `https://www.google.com/maps?q=${cafe.lat},${cafe.lng}&output=embed`;
