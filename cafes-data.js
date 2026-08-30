@@ -30,7 +30,7 @@ const cafes = [
         address: "福井県鯖江市下河端町57-58",
         lat: 35.9664498,
         lng: 136.2007893,
-        mapEmbed: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d427.26169091783646!2d136.20058517488334!3d35.96656855550506!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8b1c1fce5b297%3A0xde4fe5b0e83eeb1f!2z5a2j56-A44Gu44GK44KE44GkIOOBl-OBmuOBjw!5e0!3m2!1sja!2sus!4v1787957686938!5m2!1sja!2sus",
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d408.669718045153!2d136.20076472179986!3d35.96643643530874!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8b1c1fce5b297%3A0xde4fe5b0e83eeb1f!2z5a2j56-A44Gu44GK44KE44GkIOOBl-OBmuOBjw!5e0!3m2!1sja!2sus!4v1788052291004!5m2!1sja!2sus",
         hours: "10:00 — 18:00",
         closed: "月曜 ・ 日曜",
         comment: "焼菓子とベーグルの小さな隠れ家店🏠。",
