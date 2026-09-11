@@ -48,6 +48,7 @@ const cafes = [
         address: "福井県鯖江市下新庄町57-51",
         lat: 35.96671027712714,
         lng: 136.20077856647433,
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2864.500642706702!2d136.20945849999998!3d35.9359587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8af3eac8a39f5%3A0x7c98f00b63b0b6af!2z6L6y5a6244Gn44GK44KE44Gk5bGL44GV44KTIOOBhuOBoeOBruOBtuOBqeOBhg!5e1!3m2!1sen!2sjp!4v1789126856093!5m2!1sen!2sjp",
         hours: "10:00 — 18:30",
         closed: "月曜",
         comment: "素材本来の美味しさを大切に",
