@@ -137,6 +137,231 @@ svg[viewBox="0 0 100 100"] use,
 
 
 /* =========================
+   NEWS OVERLAY（お知らせ一覧）
+========================= */
+
+.news-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1800;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(24, 20, 16, 0.6);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease;
+}
+
+
+.news-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.news-modal {
+    width: 100%;
+    max-width: 420px;
+    max-height: 82vh;
+
+    background: var(--kinari);
+
+    box-shadow: 0 30px 60px rgba(24, 20, 16, 0.35);
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateY(20px) scale(0.98);
+
+    transition: transform 0.4s ease;
+}
+
+
+.news-overlay.open .news-modal {
+    transform: translateY(0) scale(1);
+}
+
+
+.news-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid var(--washi);
+}
+
+
+.news-modal-tab {
+    font-family: var(--font-jp-head);
+    font-weight: 600;
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    color: var(--sumi);
+
+    padding-bottom: 4px;
+
+    border-bottom: 2px solid var(--kohaku);
+}
+
+
+.news-modal-close {
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--washi);
+    color: var(--sumi);
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+.news-modal-list {
+    overflow-y: auto;
+
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+.news-item {
+    background: white;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 22px rgba(36, 31, 26, 0.08);
+}
+
+
+.news-banner {
+    height: 96px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.news-banner img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.news-banner--new {
+    background: linear-gradient(135deg, var(--mori), var(--sumi));
+}
+
+
+.news-banner--normal {
+    background: linear-gradient(135deg, var(--kohaku), var(--beni));
+}
+
+
+.news-banner-label {
+    font-family: var(--font-jp-head);
+    font-weight: 600;
+    font-size: 20px;
+
+    color: var(--kinari);
+
+    letter-spacing: 2px;
+
+    opacity: 0.92;
+}
+
+
+.news-item-body {
+    padding: 14px 16px 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.news-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-family: var(--font-utility);
+    font-size: 10px;
+}
+
+
+.news-tag {
+    padding: 3px 9px;
+
+    background: var(--washi);
+    color: var(--sumi);
+
+    letter-spacing: 1px;
+}
+
+
+.news-new-badge {
+    padding: 3px 8px;
+
+    background: var(--beni);
+    color: var(--kinari);
+
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
+.news-date {
+    margin-left: auto;
+
+    color: var(--sumi-soft);
+}
+
+
+.news-item-title {
+    font-family: var(--font-jp-head);
+    font-weight: 500;
+    font-size: 15px;
+
+    color: var(--sumi);
+}
+
+
+.news-item-comment {
+    font-size: 12px;
+    line-height: 1.8;
+
+    color: var(--sumi-soft);
+}
+
+
+/* =========================
    INTRO LOADER（開いた瞬間の演出）
 ========================= */
 
@@ -1239,6 +1464,69 @@ h2 {
     margin: auto;
 
     padding: 0 6% 160px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+
+    padding: 0 6%;
+}
+
+
+.search-bar {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    max-width: 420px;
+
+    border-bottom: 1px solid var(--sumi);
+
+    padding-bottom: 10px;
+}
+
+
+.search-icon {
+    width: 17px;
+    height: 17px;
+
+    color: var(--sumi-soft);
+
+    flex-shrink: 0;
+
+    margin-right: 12px;
+}
+
+
+.search-input {
+    flex: 1;
+
+    border: none;
+    background: transparent;
+
+    font-family: var(--font-body);
+    font-size: 14px;
+
+    color: var(--sumi);
+}
+
+
+.search-input::placeholder {
+    color: var(--sumi-soft);
+    opacity: 0.7;
+}
+
+
+.search-input:focus {
+    outline: none;
 }
 
 
