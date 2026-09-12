@@ -39,6 +39,24 @@
 
     </div>
 
+    <!-- NEWS MODAL : イントロ演出が終わったら表示するお知らせ一覧 -->
+    <div class="news-overlay" id="newsOverlay">
+
+        <div class="news-modal">
+
+            <div class="news-modal-header">
+                <span class="news-modal-tab">お知らせ</span>
+                <button class="news-modal-close" id="newsClose" aria-label="閉じる">&times;</button>
+            </div>
+
+            <div class="news-modal-list" id="newsList">
+                <!-- news-render.js がここにお知らせを自動で並べます -->
+            </div>
+
+        </div>
+
+    </div>
+
     <!-- reusable glasses-mark（鯖江=眼鏡モチーフ）, referenced with <use> throughout the page -->
     <svg width="0" height="0" style="position:absolute">
         <symbol id="ring-mark" viewBox="0 0 100 100">
@@ -177,9 +195,9 @@
 
         <div class="gallery">
 
-            <div class="gallery-large gallery-tap" data-name="スローベリィ">
-                <img src="green.jpg" alt="スローべリィ">
-                <span class="gallery-label">スローべリィ</span>
+            <div class="gallery-large gallery-tap" data-name="季節のおやつ しずく">
+                <img src="green.jpg" alt="季節のおやつ しずく">
+                <span class="gallery-label">季節のおやつ しずく</span>
             </div>
 
             <div class="gallery-tap" data-name="からだあいがん">
@@ -277,6 +295,92 @@
 
 
     <script src="script.js"></script>
+    <script src="news-data.js?v=2"></script>
+
+    <script>
+        // お知らせ一覧を描画する
+        function newsItemHTML(news) {
+
+            const bannerContent = news.image
+                ? `<img src="${news.image}" alt="${news.title}">`
+                : `<span class="news-banner-label">${news.label}</span>`;
+
+            return `
+                <div class="news-item">
+                    <div class="news-banner news-banner--${news.isNew ? "new" : "normal"}">
+                        ${bannerContent}
+                    </div>
+                    <div class="news-item-body">
+                        <div class="news-item-meta">
+                            <span class="news-tag">${news.label}</span>
+                            ${news.isNew ? `<span class="news-new-badge">NEW</span>` : ""}
+                            <span class="news-date">${news.date}</span>
+                        </div>
+                        <p class="news-item-title">${news.title}</p>
+                        <p class="news-item-comment">${news.comment || ""}</p>
+                    </div>
+                </div>
+            `;
+
+        }
+
+        function renderNews() {
+
+            const list = document.getElementById("newsList");
+
+            if (!list || typeof newsData === "undefined") {
+                return;
+            }
+
+            list.innerHTML = newsData.map(newsItemHTML).join("");
+
+        }
+
+        function openNewsOverlay() {
+
+            const overlay = document.getElementById("newsOverlay");
+
+            if (overlay) {
+                overlay.classList.add("open");
+            }
+
+        }
+
+        function closeNewsOverlay() {
+
+            const overlay = document.getElementById("newsOverlay");
+
+            if (overlay) {
+                overlay.classList.remove("open");
+            }
+
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            renderNews();
+
+            const closeBtn = document.getElementById("newsClose");
+            const overlay = document.getElementById("newsOverlay");
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeNewsOverlay);
+            }
+
+            if (overlay) {
+
+                overlay.addEventListener("click", (e) => {
+
+                    if (e.target === overlay) {
+                        closeNewsOverlay();
+                    }
+
+                });
+
+            }
+
+        });
+    </script>
 
     <script>
         // 開いた瞬間のイントロ演出：一定時間後に円形にワイプして消す
@@ -293,6 +397,7 @@
             loader.addEventListener("transitionend", (e) => {
                 if (e.propertyName === "clip-path") {
                     loader.remove();
+                    openNewsOverlay();
                 }
             });
         });
