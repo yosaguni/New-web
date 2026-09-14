@@ -295,7 +295,7 @@
 
 
     <script src="script.js"></script>
-    <script src="news-data.js?v=2"></script>
+    <script src="news-data.js?v=3"></script>
 
     <script>
         // お知らせ一覧を描画する
@@ -383,11 +383,24 @@
     </script>
 
     <script>
-        // 開いた瞬間のイントロ演出：一定時間後に円形にワイプして消す
+        // 開いた瞬間のイントロ演出：初回訪問のときだけ再生する
         window.addEventListener("load", () => {
             const loader = document.getElementById("introLoader");
 
             if (!loader) return;
+
+            const hasSeenIntro = localStorage.getItem("introSeen");
+
+            // 2回目以降の訪問は、演出をスキップしてすぐ本編を表示する
+            if (hasSeenIntro) {
+                loader.remove();
+                document.body.classList.remove("intro-active");
+                openNewsOverlay();
+                return;
+            }
+
+            // 初回訪問の印を残しておく
+            localStorage.setItem("introSeen", "true");
 
             setTimeout(() => {
                 loader.classList.add("hide");
