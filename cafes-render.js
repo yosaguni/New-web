@@ -8,8 +8,10 @@ function cafeCardHTML(cafe, index) {
 
     const ratingText = Number(cafe.rating).toFixed(1);
 
+    const searchText = `${cafe.name} ${cafe.genre} ${cafe.area} ${cafe.comment}`.toLowerCase();
+
     return `
-        <a class="cafe-card" href="${cafe.link || "#"}" data-area="${cafe.area}">
+        <a class="cafe-card" href="${cafe.link || "#"}" data-area="${cafe.area}" data-search="${searchText}">
             <div class="cafe-card-image">
                 <img src="${cafe.image}" alt="${cafe.name}">
             </div>
@@ -99,6 +101,28 @@ function renderCafes() {
 
     filters.innerHTML = allButton + areaButtons;
 
+    const searchInput = document.getElementById("cafeSearch");
+
+    // エリアの絞り込みと、検索ボックスの入力、両方を同時にチェックして
+    // どちらの条件にも合うお店だけを表示する
+    function applyFilters() {
+
+        const activeButton = filters.querySelector(".area-filter-btn.active");
+        const selectedArea = activeButton ? activeButton.dataset.filter : "all";
+
+        const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+        grid.querySelectorAll(".cafe-card").forEach((card) => {
+
+            const matchesArea = selectedArea === "all" || card.dataset.area === selectedArea;
+            const matchesKeyword = keyword === "" || card.dataset.search.includes(keyword);
+
+            card.style.display = (matchesArea && matchesKeyword) ? "" : "none";
+
+        });
+
+    }
+
     filters.addEventListener("click", (e) => {
 
         const button = e.target.closest(".area-filter-btn");
@@ -113,17 +137,15 @@ function renderCafes() {
 
         button.classList.add("active");
 
-        const selected = button.dataset.filter;
-
-        grid.querySelectorAll(".cafe-card").forEach((card) => {
-
-            const match = selected === "all" || card.dataset.area === selected;
-
-            card.style.display = match ? "" : "none";
-
-        });
+        applyFilters();
 
     });
+
+    if (searchInput) {
+
+        searchInput.addEventListener("input", applyFilters);
+
+    }
 
 }
 
