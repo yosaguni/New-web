@@ -384,7 +384,10 @@
 
     <script>
         // 開いた瞬間のイントロ演出：初回訪問のときだけ再生する
-        window.addEventListener("load", () => {
+        // ※ 画像やGIFの読み込みが遅れても演出のタイミングがズレないように、
+        //    "load"（全部読み込み終わるまで待つ）ではなく
+        //    "DOMContentLoaded"（HTMLの組み立てが終わった時点）を基準にする
+        document.addEventListener("DOMContentLoaded", () => {
             const loader = document.getElementById("introLoader");
 
             if (!loader) return;
@@ -402,10 +405,8 @@
             // 初回訪問の印を残しておく
             localStorage.setItem("introSeen", "true");
 
-            setTimeout(() => {
-                loader.classList.add("hide");
-                document.body.classList.remove("intro-active");
-            }, 200);
+            loader.classList.add("hide");
+            document.body.classList.remove("intro-active");
 
             loader.addEventListener("transitionend", (e) => {
                 if (e.propertyName === "clip-path") {
