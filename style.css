@@ -750,23 +750,10 @@ nav a:hover::after {
             rgba(24, 20, 16, 0.4),
             rgba(24, 20, 16, 0.45)
         ),
-        url("cafes.jpg");
+        url("hero.gif");
 
     background-size: cover;
     background-position: center;
-
-    transform: scale(1.05);
-
-    animation: heroZoom 8s ease forwards;
-}
-
-
-@keyframes heroZoom {
-
-    to {
-        transform: scale(1);
-    }
-
 }
 
 
