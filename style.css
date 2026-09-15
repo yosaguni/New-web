@@ -240,6 +240,7 @@ svg[viewBox="0 0 100 100"] use,
     min-height: 0;
 
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     padding: 16px;
 
@@ -363,6 +364,46 @@ svg[viewBox="0 0 100 100"] use,
     line-height: 1.8;
 
     color: var(--sumi-soft);
+}
+
+
+/* 画面の高さが低いとき（スマホ横画面など）は、ポップアップをコンパクトにする */
+@media (max-height: 500px) {
+
+    .news-overlay {
+        padding: 10px;
+    }
+
+    .news-modal {
+        max-height: 94vh;
+    }
+
+    .news-modal-header {
+        padding: 10px 16px;
+    }
+
+    .news-modal-list {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .news-banner {
+        height: 56px;
+    }
+
+    .news-banner-label {
+        font-size: 15px;
+    }
+
+    .news-item-body {
+        padding: 8px 12px 10px;
+        gap: 3px;
+    }
+
+    .news-item-comment {
+        display: none;
+    }
+
 }
 
 
