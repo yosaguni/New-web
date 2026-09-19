@@ -152,6 +152,8 @@ svg[viewBox="0 0 100 100"] use,
 
     padding: 24px;
 
+    overflow-y: auto;
+
     background: rgba(24, 20, 16, 0.6);
 
     opacity: 0;
@@ -171,6 +173,8 @@ svg[viewBox="0 0 100 100"] use,
     width: 100%;
     max-width: 420px;
     max-height: 82vh;
+
+    margin: auto;
 
     background: var(--kinari);
 
@@ -968,6 +972,13 @@ nav a:hover::after {
 h2 {
     font-family: var(--font-jp-head);
     font-weight: 500;
+
+    overflow-wrap: break-word;
+}
+
+
+.hero h1 {
+    overflow-wrap: break-word;
 }
 
 
@@ -2328,6 +2339,16 @@ footer small {
         height: 26px;
     }
 
+    .hero {
+        height: 56.25vw;
+        min-height: 220px;
+    }
+
+    .hero-image {
+        background-size: contain;
+        background-color: var(--sumi);
+    }
+
     .hero-content {
         left: 7%;
         bottom: 12%;
@@ -2370,6 +2391,10 @@ footer small {
         font-size: 12px;
     }
 
+    .about-text h2 {
+        font-size: clamp(30px, 8vw, 46px);
+    }
+
     .story {
         padding: 110px 25px;
     }
@@ -2391,6 +2416,10 @@ footer small {
         grid-template-columns: 1fr;
         padding: 100px 25px;
         gap: 60px;
+    }
+
+    .access-text h2 {
+        font-size: clamp(34px, 10vw, 50px);
     }
 
     .access-image img {
