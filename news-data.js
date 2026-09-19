@@ -41,7 +41,17 @@ const newsData = [
         title: "秋のおすすめカフェ特集",
         comment: "涼しくなってきたこの時期にぴったりのお店をご紹介。"
         // image: "news3.jpg"
-    }
+    },
+     {
+        label: "特集",
+        isNew: false,
+        date: "2026.06.10",
+        title: "冬のおすすめカフェ特集",
+        comment: "寒い～冬のおいしいパフェ"
+        // image: "news3.jpg"
+    },
+
+
 
     // ↑↑↑ 新しいお知らせを追加するときは、直前の要素の後ろに「,」を忘れずに ↑↑↑
 
