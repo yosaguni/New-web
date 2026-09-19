@@ -371,24 +371,39 @@ svg[viewBox="0 0 100 100"] use,
 }
 
 
-/* 画面の高さが低いとき（スマホ横画面など）は、ポップアップをコンパクトにする */
+/* 画面の高さが低いとき（スマホ横画面など）は、
+   内側での区切ったスクロールをやめて、ポップアップ全体を伸ばし、
+   外側（news-overlay）でまとめてスクロールできるようにする */
 @media (max-height: 500px) {
 
     .news-overlay {
+        align-items: flex-start;
         padding: 10px;
     }
 
     .news-modal {
-        max-height: 94vh;
+        max-height: none;
+        margin: 0 auto;
+    }
+
+    .news-modal-list {
+        flex: none;
+        min-height: auto;
+
+        overflow-y: visible;
+
+        padding: 10px;
+        gap: 8px;
     }
 
     .news-modal-header {
         padding: 10px 16px;
-    }
 
-    .news-modal-list {
-        padding: 10px;
-        gap: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        background: var(--kinari);
     }
 
     .news-banner {
