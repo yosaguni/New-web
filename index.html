@@ -210,10 +210,6 @@
                 <span class="gallery-label">ドルチェ</span>
             </div>
 
-         <div class="gallery-tap" data-name="びーとろ実生庵">
-                <img src="umameshi.jpg" alt="びーとろ実生庵">
-                <span class="gallery-label">びーとろ実生庵</span>
-            </div>
         </div>
 
     </section>
@@ -387,35 +383,27 @@
     </script>
 
     <script>
-        // 開いた瞬間のイントロ演出：初回訪問のときだけ再生する
-        window.addEventListener("load", () => {
+        // 開いた瞬間のイントロ演出：毎回再生する
+        document.addEventListener("DOMContentLoaded", () => {
             const loader = document.getElementById("introLoader");
 
             if (!loader) return;
-
-            const hasSeenIntro = localStorage.getItem("introSeen");
-
-            // 2回目以降の訪問は、演出をスキップしてすぐ本編を表示する
-            if (hasSeenIntro) {
-                loader.remove();
-                document.body.classList.remove("intro-active");
-                openNewsOverlay();
-                return;
-            }
-
-            // 初回訪問の印を残しておく
-            localStorage.setItem("introSeen", "true");
-
-            setTimeout(() => {
-                loader.classList.add("hide");
-                document.body.classList.remove("intro-active");
-            }, 200);
 
             loader.addEventListener("transitionend", (e) => {
                 if (e.propertyName === "clip-path") {
                     loader.remove();
                     openNewsOverlay();
                 }
+            });
+
+            // ブラウザに最初の状態を一度描画させてから "hide" を付けないと、
+            // transition（ゆっくり変化する演出）が無視されて瞬時にジャンプしてしまうため、
+            // 2回のrequestAnimationFrameで確実に1フレーム描画を挟む
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    loader.classList.add("hide");
+                    document.body.classList.remove("intro-active");
+                });
             });
         });
     </script>
