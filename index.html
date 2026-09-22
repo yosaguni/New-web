@@ -45,12 +45,44 @@
         <div class="news-modal">
 
             <div class="news-modal-header">
-                <span class="news-modal-tab">お知らせ</span>
+                <span class="news-modal-tab">
+                    <svg class="news-modal-tab-ring" viewBox="0 0 100 100" aria-hidden="true">
+                        <use href="#ring-mark"></use>
+                    </svg>
+                    お知らせ
+                </span>
                 <button class="news-modal-close" id="newsClose" aria-label="閉じる">&times;</button>
             </div>
 
             <div class="news-modal-list" id="newsList">
                 <!-- news-render.js がここにお知らせを自動で並べます -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NEWS DETAIL : お知らせをクリックしたときに開く詳細ポップアップ -->
+    <div class="news-detail-overlay" id="newsDetailOverlay">
+
+        <div class="news-detail-modal">
+
+            <button class="news-detail-close" id="newsDetailClose" aria-label="閉じる">&times;</button>
+
+            <div class="news-detail-banner" id="newsDetailBanner"></div>
+
+            <div class="news-detail-body">
+
+                <div class="news-item-meta">
+                    <span class="news-tag" id="newsDetailTag"></span>
+                    <span class="news-new-badge" id="newsDetailNew" style="display:none;">NEW</span>
+                    <span class="news-date" id="newsDetailDate"></span>
+                </div>
+
+                <h3 id="newsDetailTitle"></h3>
+
+                <p id="newsDetailComment"></p>
+
             </div>
 
         </div>
@@ -313,28 +345,25 @@
     <script src="news-data.js?v=3"></script>
 
     <script>
-        // お知らせ一覧を描画する
-        function newsItemHTML(news) {
+        // お知らせ一覧を描画する（コンパクト表示。クリックすると詳細が開く）
+        function newsItemHTML(news, index) {
 
             const bannerContent = news.image
                 ? `<img src="${news.image}" alt="${news.title}">`
                 : `<span class="news-banner-label">${news.label}</span>`;
 
             return `
-                <div class="news-item">
+                <button class="news-item" type="button" data-index="${index}">
                     <div class="news-banner news-banner--${news.isNew ? "new" : "normal"}">
                         ${bannerContent}
+                        ${news.isNew ? `<span class="news-new-dot"></span>` : ""}
                     </div>
                     <div class="news-item-body">
-                        <div class="news-item-meta">
-                            <span class="news-tag">${news.label}</span>
-                            ${news.isNew ? `<span class="news-new-badge">NEW</span>` : ""}
-                            <span class="news-date">${news.date}</span>
-                        </div>
+                        <span class="news-tag">${news.label}</span>
                         <p class="news-item-title">${news.title}</p>
-                        <p class="news-item-comment">${news.comment || ""}</p>
+                        <span class="news-date">${news.date}</span>
                     </div>
-                </div>
+                </button>
             `;
 
         }
@@ -348,6 +377,57 @@
             }
 
             list.innerHTML = newsData.map(newsItemHTML).join("");
+
+            list.querySelectorAll(".news-item").forEach((item) => {
+
+                item.addEventListener("click", () => {
+
+                    const news = newsData[Number(item.dataset.index)];
+
+                    if (news) {
+                        openNewsDetail(news);
+                    }
+
+                });
+
+            });
+
+        }
+
+        function openNewsDetail(news) {
+
+            const overlay = document.getElementById("newsDetailOverlay");
+
+            if (!overlay) {
+                return;
+            }
+
+            const bannerEl = document.getElementById("newsDetailBanner");
+
+            bannerEl.className = `news-detail-banner news-banner--${news.isNew ? "new" : "normal"}`;
+            bannerEl.innerHTML = news.image
+                ? `<img src="${news.image}" alt="${news.title}">`
+                : `<span class="news-banner-label">${news.label}</span>`;
+
+            document.getElementById("newsDetailTag").textContent = news.label;
+            document.getElementById("newsDetailDate").textContent = news.date;
+            document.getElementById("newsDetailTitle").textContent = news.title;
+            document.getElementById("newsDetailComment").textContent = news.comment || "";
+
+            const newBadge = document.getElementById("newsDetailNew");
+            newBadge.style.display = news.isNew ? "" : "none";
+
+            overlay.classList.add("open");
+
+        }
+
+        function closeNewsDetail() {
+
+            const overlay = document.getElementById("newsDetailOverlay");
+
+            if (overlay) {
+                overlay.classList.remove("open");
+            }
 
         }
 
@@ -378,6 +458,9 @@
             const closeBtn = document.getElementById("newsClose");
             const overlay = document.getElementById("newsOverlay");
 
+            const detailOverlay = document.getElementById("newsDetailOverlay");
+            const detailCloseBtn = document.getElementById("newsDetailClose");
+
             if (closeBtn) {
                 closeBtn.addEventListener("click", closeNewsOverlay);
             }
@@ -388,6 +471,22 @@
 
                     if (e.target === overlay) {
                         closeNewsOverlay();
+                    }
+
+                });
+
+            }
+
+            if (detailCloseBtn) {
+                detailCloseBtn.addEventListener("click", closeNewsDetail);
+            }
+
+            if (detailOverlay) {
+
+                detailOverlay.addEventListener("click", (e) => {
+
+                    if (e.target === detailOverlay) {
+                        closeNewsDetail();
                     }
 
                 });
