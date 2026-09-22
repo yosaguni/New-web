@@ -300,6 +300,19 @@ function openCafeModal(cafe) {
 
     document.getElementById("modalMapFrame").src = getCafeMapEmbedUrl(cafe);
 
+    const instagramLink = document.getElementById("modalInstagram");
+
+    if (instagramLink) {
+
+        if (cafe.instagram) {
+            instagramLink.href = cafe.instagram;
+            instagramLink.style.display = "";
+        } else {
+            instagramLink.style.display = "none";
+        }
+
+    }
+
     const modalFavBtn = document.getElementById("modalFavorite");
 
     if (modalFavBtn) {

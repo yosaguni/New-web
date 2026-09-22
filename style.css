@@ -1944,6 +1944,44 @@ h2 {
 }
 
 
+.modal-instagram {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 4px;
+
+    padding: 10px 14px;
+
+    color: var(--sumi);
+    text-decoration: none;
+
+    font-family: var(--font-utility);
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    border: 1px solid var(--washi);
+
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+
+.modal-instagram:hover {
+    background: var(--washi);
+    border-color: var(--kohaku);
+}
+
+
+.modal-instagram svg {
+    width: 16px;
+    height: 16px;
+
+    color: var(--kohaku);
+
+    flex-shrink: 0;
+}
+
+
 .area-filters {
     display: flex;
     flex-wrap: wrap;
