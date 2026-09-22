@@ -118,6 +118,7 @@
         </a>
 
         <nav>
+            <a href="#" id="navNewsBtn"><span class="nav-index">お知らせ</span>NEWS</a>
             <a href="#about"><span class="nav-index">概要</span>ABOUT</a>
             <a href="#gallery"><span class="nav-index">メニュー</span>MENU</a>
             <a href="#access"><span class="nav-index">おすすめ</span>RECOMMEND</a>
@@ -457,12 +458,22 @@
 
             const closeBtn = document.getElementById("newsClose");
             const overlay = document.getElementById("newsOverlay");
+            const navNewsBtn = document.getElementById("navNewsBtn");
 
             const detailOverlay = document.getElementById("newsDetailOverlay");
             const detailCloseBtn = document.getElementById("newsDetailClose");
 
             if (closeBtn) {
                 closeBtn.addEventListener("click", closeNewsOverlay);
+            }
+
+            if (navNewsBtn) {
+
+                navNewsBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openNewsOverlay();
+                });
+
             }
 
             if (overlay) {
