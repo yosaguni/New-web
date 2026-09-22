@@ -622,7 +622,7 @@ body.intro-active {
 
     opacity: 0;
 
-    animation: introSmallIn 0.5s ease forwards 1.25s;
+    animation: introSmallIn 0.7s ease forwards 2.05s;
 }
 
 
@@ -643,7 +643,7 @@ body.intro-active {
 
     pointer-events: none;
 
-    animation: introFlashPulse 0.3s ease forwards 1.95s;
+    animation: introFlashPulse 0.45s ease forwards 3.15s;
 }
 
 
@@ -1098,6 +1098,17 @@ h2 {
     height: 650px;
 
     object-fit: cover;
+
+    filter: grayscale(1);
+    transform: scale(1.1);
+
+    transition: filter 1.6s ease, transform 1.6s ease;
+}
+
+
+.about.show .about-image img {
+    filter: grayscale(0);
+    transform: scale(1);
 }
 
 
