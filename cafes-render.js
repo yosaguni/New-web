@@ -11,7 +11,12 @@ function cafeCardHTML(cafe, index) {
     const searchText = `${cafe.name} ${cafe.genre} ${cafe.area} ${cafe.comment}`.toLowerCase();
 
     return `
-        <a class="cafe-card" href="${cafe.link || "#"}" data-area="${cafe.area}" data-search="${searchText}">
+        <a class="cafe-card" href="${cafe.link || "#"}" data-area="${cafe.area}" data-search="${searchText}" data-name="${cafe.name}">
+
+            <button class="favorite-btn" type="button" data-name="${cafe.name}" aria-label="お気に入り登録">
+                <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1 4.5 2.5 1-1.5 2.5-2.5 4.5-2.5C18 4.5 19.5 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg>
+            </button>
+
             <div class="cafe-card-image">
                 <img src="${cafe.image}" alt="${cafe.name}">
             </div>
@@ -50,6 +55,70 @@ function swipeItemHTML(cafe, index) {
 }
 
 
+// =========================================================
+// お気に入り機能
+// =========================================================
+
+const FAVORITES_KEY = "sabaeCafeFavorites";
+
+function getFavorites() {
+
+    try {
+        const saved = localStorage.getItem(FAVORITES_KEY);
+        return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+        return [];
+    }
+
+}
+
+function saveFavorites(list) {
+
+    try {
+        localStorage.setItem(FAVORITES_KEY, JSON.stringify(list));
+    } catch (e) {
+        // 保存できなくても、表示上の見た目は動き続けるので何もしない
+    }
+
+}
+
+function isFavorite(name) {
+
+    return getFavorites().includes(name);
+
+}
+
+function toggleFavorite(name) {
+
+    const list = getFavorites();
+    const index = list.indexOf(name);
+
+    if (index === -1) {
+        list.push(name);
+    } else {
+        list.splice(index, 1);
+    }
+
+    saveFavorites(list);
+
+    return list.includes(name);
+
+}
+
+// 画面上の♡ボタンの見た目を、保存されているお気に入り状態と合わせる
+function syncFavoriteButtons() {
+
+    document.querySelectorAll(".favorite-btn").forEach((btn) => {
+
+        const name = btn.dataset.name;
+
+        btn.classList.toggle("is-favorite", isFavorite(name));
+
+    });
+
+}
+
+
 function renderCafes() {
 
     const grid = document.getElementById("cafeGrid");
@@ -63,6 +132,34 @@ function renderCafes() {
     // カードを描画
     if (grid) {
         grid.innerHTML = cafes.map(cafeCardHTML).join("");
+
+        syncFavoriteButtons();
+
+        grid.addEventListener("click", (e) => {
+
+            const favBtn = e.target.closest(".favorite-btn");
+
+            if (!favBtn) {
+                return;
+            }
+
+            // カードのリンク（お店の詳細ページ）に飛ばないようにする
+            e.preventDefault();
+            e.stopPropagation();
+
+            const nowFavorite = toggleFavorite(favBtn.dataset.name);
+
+            favBtn.classList.toggle("is-favorite", nowFavorite);
+
+            // 「お気に入りだけ表示」中に外したときは、その場でカードも消す
+            const favFilterBtn = filters ? filters.querySelector(".area-filter-btn.active[data-filter='__favorites__']") : null;
+
+            if (favFilterBtn) {
+                applyFilters();
+            }
+
+        });
+
     }
 
     // スワイプ帯を描画
@@ -99,12 +196,14 @@ function renderCafes() {
         .map((area) => `<button class="area-filter-btn" data-filter="${area}">${area}</button>`)
         .join("");
 
-    filters.innerHTML = allButton + areaButtons;
+    const favoriteButton = `<button class="area-filter-btn favorite-filter-btn" data-filter="__favorites__">♡ お気に入り</button>`;
+
+    filters.innerHTML = allButton + areaButtons + favoriteButton;
 
     const searchInput = document.getElementById("cafeSearch");
 
-    // エリアの絞り込みと、検索ボックスの入力、両方を同時にチェックして
-    // どちらの条件にも合うお店だけを表示する
+    // エリアの絞り込みと、検索ボックスの入力、お気に入り絞り込み、
+    // すべてを同時にチェックして、条件に合うお店だけを表示する
     function applyFilters() {
 
         const activeButton = filters.querySelector(".area-filter-btn.active");
@@ -114,7 +213,14 @@ function renderCafes() {
 
         grid.querySelectorAll(".cafe-card").forEach((card) => {
 
-            const matchesArea = selectedArea === "all" || card.dataset.area === selectedArea;
+            let matchesArea;
+
+            if (selectedArea === "__favorites__") {
+                matchesArea = isFavorite(card.dataset.name);
+            } else {
+                matchesArea = selectedArea === "all" || card.dataset.area === selectedArea;
+            }
+
             const matchesKeyword = keyword === "" || card.dataset.search.includes(keyword);
 
             card.style.display = (matchesArea && matchesKeyword) ? "" : "none";
@@ -194,6 +300,13 @@ function openCafeModal(cafe) {
 
     document.getElementById("modalMapFrame").src = getCafeMapEmbedUrl(cafe);
 
+    const modalFavBtn = document.getElementById("modalFavorite");
+
+    if (modalFavBtn) {
+        modalFavBtn.dataset.name = cafe.name;
+        modalFavBtn.classList.toggle("is-favorite", isFavorite(cafe.name));
+    }
+
     overlay.classList.add("open");
 
     document.body.style.overflow = "hidden";
@@ -222,9 +335,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const overlay = document.getElementById("modalOverlay");
     const closeBtn = document.getElementById("modalClose");
+    const modalFavBtn = document.getElementById("modalFavorite");
 
     if (closeBtn) {
         closeBtn.addEventListener("click", closeCafeModal);
+    }
+
+    if (modalFavBtn) {
+
+        modalFavBtn.addEventListener("click", () => {
+
+            const name = modalFavBtn.dataset.name;
+
+            if (!name) {
+                return;
+            }
+
+            const nowFavorite = toggleFavorite(name);
+
+            modalFavBtn.classList.toggle("is-favorite", nowFavorite);
+
+            // 一覧側の同じお店の♡マークも合わせて更新する
+            document.querySelectorAll(`.favorite-btn[data-name="${CSS.escape(name)}"]`).forEach((btn) => {
+                btn.classList.toggle("is-favorite", nowFavorite);
+            });
+
+        });
+
     }
 
     if (overlay) {

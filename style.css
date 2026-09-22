@@ -1100,7 +1100,7 @@ h2 {
     object-fit: cover;
 
     filter: grayscale(1);
-    transform: scale(1.1);
+    transform: scale(1.03);
 
     transition: filter 1.6s ease, transform 1.6s ease;
 }
@@ -1798,6 +1798,55 @@ h2 {
 }
 
 
+.modal-favorite {
+    position: absolute;
+
+    top: 14px;
+    right: 56px;
+
+    z-index: 2;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(24, 20, 16, 0.55);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+
+.modal-favorite svg {
+    width: 16px;
+    height: 16px;
+
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+
+.modal-favorite.is-favorite {
+    background: rgba(156, 80, 49, 0.9);
+}
+
+
+.modal-favorite.is-favorite svg {
+    fill: var(--kinari);
+    stroke: var(--kinari);
+}
+
+
 .modal-image {
     height: 220px;
 
@@ -1973,6 +2022,8 @@ h2 {
 
 
 .cafe-card {
+    position: relative;
+
     display: flex;
     flex-direction: column;
 
@@ -1986,6 +2037,67 @@ h2 {
     box-shadow: 0 14px 34px rgba(36, 31, 26, 0.08);
 
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.favorite-btn {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    z-index: 2;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(24, 20, 16, 0.4);
+    backdrop-filter: blur(2px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+
+.favorite-btn:hover {
+    transform: scale(1.08);
+}
+
+
+.favorite-btn svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+
+.favorite-btn.is-favorite {
+    background: rgba(156, 80, 49, 0.9);
+}
+
+
+.favorite-btn.is-favorite svg {
+    fill: var(--kinari);
+    stroke: var(--kinari);
+}
+
+
+/* エリアフィルターの中の「♡ お気に入り」ボタンだけ少し色を変える */
+.favorite-filter-btn {
+    color: var(--beni);
 }
 
 
