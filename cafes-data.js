@@ -103,7 +103,7 @@ const cafes = [
         area: "鯖江市上河端町",
         genre: "カフェ・喫茶",
         rating: 4.4,
-        image: ".jpg",
+        image: "bito.jpg",
         address: "福井県鯖江市河端町16-43",
         mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.959264180346!2d136.1909937745864!3d35.95551611486014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8af606c14a909%3A0xc9652ebc277cf3cc!2z44Gz44O844Gp44KN5a6f55Sf5bq1!5e1!3m2!1sja!2sjp!4v1788842111721!5m2!1sja!2sjp",
         hours: "11:30 — 15:00",
