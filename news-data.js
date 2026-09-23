@@ -22,7 +22,7 @@ const newsData = [
         date: "2026.09.11",
         title: "サイトをリニューアルしました！",
         comment: "見やすく、探しやすくなりました。ぜひチェックしてみてください。"
-        // image: "news1.jpg"
+        image: "upda.jpg"
     },
 
     {
@@ -31,7 +31,7 @@ const newsData = [
         date: "2026.09.05",
         title: "新しいお店を追加しました",
         comment: "鯖江のお気に入りスポットがまた1つ増えました。鯖江のカフェはどこも個性があっていいですよね～あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
-        // image: "news2.jpg"
+        image: "info.jpg"
     },
 
     {
@@ -40,7 +40,7 @@ const newsData = [
         date: "2026.08.20",
         title: "秋のおすすめカフェ特集",
         comment: "涼しくなってきたこの時期にぴったりのお店をご紹介。"
-        // image: "news3.jpg"
+        image: "kyan.jpg"
     },
      {
         label: "特集",
@@ -48,7 +48,7 @@ const newsData = [
         date: "2026.06.10",
         title: "冬のおすすめカフェ特集",
         comment: "寒い～冬のおいしいパフェ"
-        // image: "news3.jpg"
+        image: "toku.jpg"
     },
 
 
