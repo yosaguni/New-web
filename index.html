@@ -186,7 +186,7 @@
     <section id="about" class="about">
 
         <div class="about-image"> 
-            <img src="kirei.jpg" alt="Sabae caféの店内">
+            <img src="cafes.jpg" alt="Sabae caféの店内">
             <p class="margin-note">私たちの合言葉は、<br>「落ち着く」。</p>
         </div>
 
@@ -287,37 +287,178 @@
             <div class="info">
 
                 <p>
-                    <span><svg class="pin" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg>からだあいがん</span>
+                    <span><svg class="pin" viewBox="0 0 100 100"><use href="#ring-mark"></use></svg><span id="accessName">からだあいがん</span></span>
                                 </p>
 
                 <p>
                     <span>OPEN</span>
-                    10:00 ~ 18:30
+                    <span id="accessOpen">10:00 ~ 18:30</span>
                 </p>
 
                 <p>
                     <span>CLOSED</span>
-                    Saturday and Webnesday
+                    <span id="accessClosed">月曜</span>
                 </p>
 
                 <p>
                     <span>RATING</span>
                     <span class="rating-row">
-                        <span class="stars" style="--rating:4.5"></span>
-                        <span class="rating-num">4.3 / 5.0 (98)</span>
+                        <span class="stars" id="accessStars" style="--rating:4.3"></span>
+                        <span class="rating-num" id="accessRatingNum">4.3 / 5.0</span>
                     </span>
                 </p>
 
+            </div>
+
+            <div class="access-map">
+                <iframe
+                    id="accessMapFrame"
+                    src=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
 
         </div>
 
 
         <div class="access-image">
-            <img src="sushi.jpg" alt="カフェ">
+
+            <div class="access-slider" id="accessSlider">
+                <!-- ここにJSでお店の写真を並べます -->
+            </div>
+
+            <div class="access-dots" id="accessDots">
+                <!-- ここにJSでスライドの点を並べます -->
+            </div>
+
         </div>
 
     </section>
+
+
+    <script src="cafes-data.js"></script>
+
+    <script>
+        // ACCESSセクション：お店の写真を横スライドし、
+        // 今見えているお店に合わせて情報・地図を切り替える
+        document.addEventListener("DOMContentLoaded", () => {
+
+            if (typeof cafes === "undefined") {
+                return;
+            }
+
+            const slider = document.getElementById("accessSlider");
+            const dotsWrap = document.getElementById("accessDots");
+
+            if (!slider || !dotsWrap) {
+                return;
+            }
+
+            // ここで「おすすめ」として表示したいお店を選ぶ（好きに増減・並び替えOK）
+            const recommendedNames = [
+                "からだあいがん",
+                "季節のおやつ  しずく",
+                "スローベリィ",
+                "ドルチェ"
+            ];
+
+            const stores = cafes.filter((cafe) => recommendedNames.includes(cafe.name));
+
+            if (stores.length === 0) {
+                return;
+            }
+
+            function getMapUrl(cafe) {
+
+                if (cafe.mapEmbed) {
+                    return cafe.mapEmbed;
+                }
+
+                if (typeof cafe.lat === "number" && typeof cafe.lng === "number") {
+                    return `https://www.google.com/maps?q=${cafe.lat},${cafe.lng}&output=embed`;
+                }
+
+                return `https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`;
+
+            }
+
+            slider.innerHTML = stores.map((cafe) => `
+                <div class="access-slide">
+                    <img src="${cafe.image}" alt="${cafe.name}">
+                </div>
+            `).join("");
+
+            dotsWrap.innerHTML = stores.map((cafe, i) => `
+                <button class="access-dot${i === 0 ? " active" : ""}" data-index="${i}" aria-label="${cafe.name}"></button>
+            `).join("");
+
+            const slideEls = slider.querySelectorAll(".access-slide");
+            const dotEls = dotsWrap.querySelectorAll(".access-dot");
+
+            function updateInfo(index) {
+
+                const cafe = stores[index];
+
+                if (!cafe) {
+                    return;
+                }
+
+                document.getElementById("accessName").textContent = cafe.name;
+                document.getElementById("accessOpen").textContent = cafe.hours;
+                document.getElementById("accessClosed").textContent = cafe.closed;
+                document.getElementById("accessStars").style.setProperty("--rating", cafe.rating);
+                document.getElementById("accessRatingNum").textContent = `${Number(cafe.rating).toFixed(1)} / 5.0`;
+                document.getElementById("accessMapFrame").src = getMapUrl(cafe);
+
+                dotEls.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === index);
+                });
+
+            }
+
+            // 一番はじめのお店の情報・地図を表示
+            updateInfo(0);
+
+            // スクロールして今一番見えているスライドを判定し、情報を切り替える
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+
+                        const index = Array.from(slideEls).indexOf(entry.target);
+
+                        if (index !== -1) {
+                            updateInfo(index);
+                        }
+
+                    }
+
+                });
+
+            }, { root: slider, threshold: 0.6 });
+
+            slideEls.forEach((slide) => observer.observe(slide));
+
+            // 点をクリックしたら、そのスライドまでスクロールする
+            dotEls.forEach((dot) => {
+
+                dot.addEventListener("click", () => {
+
+                    const index = Number(dot.dataset.index);
+
+                    if (slideEls[index]) {
+                        slideEls[index].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+
 
 
     <!-- FOOTER -->
