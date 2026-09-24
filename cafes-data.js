@@ -65,11 +65,10 @@ const cafes = [
         rating: 4.3,
         image: "aigan.jpg",
         address: "福井県鯖江市水落町1-514",
-        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.470740330163!2d136.1949409!3d35.9394741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8afca8dc01661%3A0x93beb6c3c36a75fd!2z44Kr44OV44KnJuiHqueEtumjn-WTgeW6lyDjgYvjgonjgaDjgYLjgYTjgYvjgpPvvIgg44GL44G144GH44GC44KT44Gp44GX44Gc44KT44GX44KH44GP44Gy44KT44Gm44KTIOOBi-OCieOBoOOBguOBhOOBi-OCk--8iQ!5e1!3m2!1sja!2sjp!4v1788841846843!5m2!1sja!2sjp",
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.306392732372!2d136.19236597580903!3d35.93947407250511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8afca8dc01661%3A0x93beb6c3c36a75fd!2z44Kr44OV44KnJuiHqueEtumjn-WTgeW6lyDjgYvjgonjgaDjgYLjgYTjgYvjgpPvvIgg44GL44G144GH44GC44KT44Gp44GX44Gc44KT44GX44KH44GP44Gy44KT44Gm44KTIOOBi-OCieOBoOOBguOBhOOBi-OCk--8iQ!5e0!3m2!1sja!2sjp!4v1790247004523!5m2!1sja!2sjp",
         hours: "8:00 — 18:00",
         closed: "月曜",
         comment: "自家焙煎の豆と、明るく開放的な店内が人気。",
-        instagram: "https://www.instagram.com/karada_ican/",
         link: "#"
     },
     {
@@ -103,7 +102,7 @@ const cafes = [
         area: "鯖江市上河端町",
         genre: "カフェ・喫茶",
         rating: 4.4,
-        image: "bito.jpg",
+        image: ".jpg",
         address: "福井県鯖江市河端町16-43",
         mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.959264180346!2d136.1909937745864!3d35.95551611486014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8af606c14a909%3A0xc9652ebc277cf3cc!2z44Gz44O844Gp44KN5a6f55Sf5bq1!5e1!3m2!1sja!2sjp!4v1788842111721!5m2!1sja!2sjp",
         hours: "11:30 — 15:00",
