@@ -96,7 +96,6 @@ const cafes = [
         image: "doru.jpg",
         address: "福井県鯖江市桜町7-15",
         mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40311.497789823065!2d136.1563158761683!3d35.93954087037173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff8afd385bb9be9%3A0x8974402ec18c9ddc!2z44OJ44Or44OB44Kn!5e1!3m2!1sja!2sjp!4v1788842040779!5m2!1sja!2sjp",
-        instagram: "Not found"
         hours: "8:00 — 19:00",
         closed: "水曜",
         comment: "老舗喫茶店で懐かしの味！",
